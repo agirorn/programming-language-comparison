@@ -40,8 +40,8 @@ app.MapGet("/count", async (NpgsqlConnection connection) =>
 
 app.MapPost("/insert", async (NpgsqlConnection connection, RawData body) =>
 {
-    var count = await connection.QueryAsync<int>("SELECT count(*) from csharp_2");
-    Console.WriteLine("Counting: {0}", count);
+    // var count = await connection.QueryAsync<int>("SELECT count(*) from csharp_2");
+    // Console.WriteLine("Counting: {0}", count);
     if (connection.State != System.Data.ConnectionState.Open)
     {
         Console.WriteLine("the connection is not open!!");
@@ -51,14 +51,13 @@ app.MapPost("/insert", async (NpgsqlConnection connection, RawData body) =>
     var id = System.Guid.NewGuid();
     // Console.WriteLine("id: {0}", id);
     string sql = $"INSERT INTO csharp_2 (id, data) VALUES (@id, @data)";
-    await using (var cmd = new NpgsqlCommand(sql, connection))
-    {
-        cmd.Parameters.AddWithValue("id", id);
-        cmd.Parameters.AddWithValue("data", JsonSerializer.Serialize(body))
-            .NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Json;
+    var cmd = new NpgsqlCommand(sql, connection);
+    cmd.Parameters.AddWithValue("id", id);
+    cmd.Parameters.AddWithValue("data", JsonSerializer.Serialize(body))
+        .NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Json;
 
-        await cmd.ExecuteNonQueryAsync();
-    }
+    await cmd.ExecuteNonQueryAsync().ConfigureAwait(false);
+
     return Results.Ok(body);
 });
 

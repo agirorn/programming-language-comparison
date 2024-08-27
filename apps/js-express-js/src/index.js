@@ -86,12 +86,13 @@ server.get('/select-count', wrap(async (req, res, next) => {
 
 server.post('/insert', wrap(async (req, res, next) => {
   const { body } = req;
+  const data = JSON.parse(body);
   const id = uuid.v4();
   const { rows } = await pool.query(`
     insert into js_express_js (id, data)
     values ($1, $2)
     returning id, "offset";
-  `, [id, body])
+  `, [id, JSON.stringify(body)])
   res.json(rows);
 }));
 

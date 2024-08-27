@@ -68,7 +68,7 @@ async def post_insert(request: Request, item: Item):
     # print(item.model_dump())
     # print(type(item.model_dump_json()))
     id = uuid.uuid1()
-    print(id)
+    # print(id)
     # return "result"
     async with request.app.async_pool.connection() as conn:
         async with conn.cursor() as cur:
