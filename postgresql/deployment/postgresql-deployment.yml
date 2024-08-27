@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: postgres-sql
+  name: postgresql-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-sql
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: postgres-sql
+    spec:
+      containers:
+      - image: postgres:latest
+        name: postgres-sql
+        ports:
+          - containerPort: 5432
+        envFrom:
+          - secretRef:
+              name: psql-db-secrets
+      #   volumeMounts:
+      #     - mountPath: /var/lib/postgresql/data
+      #       name: pgdbdatavol
+      # volumes:
+      #   - name: pgdbdatavol
+      #     persistentVolumeClaim:
+      #       claimName: psql-db-pvc

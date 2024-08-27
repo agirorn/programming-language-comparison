@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+echo js_express_js
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"key":"'`uuid`'"}' \
+  http://localhost/app/js_express_js/insert
+
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo rust_axum
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"key":"'`uuid`'"}' \
+  http://localhost/app/rust_axum/insert
+
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo py_fastapi_uvicorn0
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"key":"'`uuid`'"}' \
+  http://localhost/app/py_fastapi_uvicorn/insert
+
+echo ""
+curl http://localhost/app/py_fastapi_uvicorn/count
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo csharp_2
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"key":"'`uuid`'"}' \
+  http://localhost/app/csharp_2/insert
+
+echo ""
+curl http://localhost/app/csharp_2/count
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo rust_axum
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"key":"'`uuid`'"}' \
+  http://localhost/app/rust_axum/insert
+
+echo ""
+curl http://localhost/app/rust_axum/count
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+
+
+# echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+#
+# # curl \
+# #   --request POST \
+# #   --header "Content-Type: application/json" \
+# #   --data '{"key":"xyz"}' \
+# #   http://localhost:8082/insert
+# #
+# # echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+# #
+# /usr/bin/time -p curl \
+#   -i \
+#   --request POST \
+#   --header "Content-Type: application/json" \
+#   --data '{"key":"'`uuid`'"}' \
+#   http://localhost:8080/insert
+#
+# echo ""
+# echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+# #

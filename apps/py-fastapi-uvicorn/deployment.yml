@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-py-fastapi-uvicorn
+  labels:
+    app: app-py-fastapi-uvicorn
+spec:
+  containers:
+    - name: app-py-fastapi-uvicorn-container
+      image: app-py-fastapi-uvicorn
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 8080
+      env:
+        - name: DB_HOST
+          value: "postgres"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          value: "db_user"
+        - name: DB_PASS
+          value: "db_pass"
+        - name: DB_DATABASE
+          value: the_database
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-py-fastapi-uvicorn-service
+spec:
+  selector:
+    app: app-py-fastapi-uvicorn
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

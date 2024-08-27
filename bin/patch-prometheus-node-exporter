@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+SLEEP_MS=0.5
+NAME="prometheus-node-exporter"
+FIRST_LOAD="G0"
+
+function patch() {
+  kubectl patch ds kube-prometheus-stack-prometheus-node-exporter --type "json" -p '[{"op": "remove", "path" : "/spec/template/spec/containers/0/volumeMounts/2/mountPropagation"}]'
+}
+
+function status() {
+  kubectl get pods 2>/dev/null | rg kube-prometheus-stack-prometheus-node-exporter
+}
+
+LOADED="status | rg kube-prometheus-stack-prometheus-node-exporter >> /dev/null"
+function loaded() {
+  POD_NAME=kube-prometheus-stack-prometheus-node-exporter
+  status | rg ${POD_NAME} >> /dev/null
+  v="$?"
+  echo "$v"
+}
+
+
+
+function in_run_container_error() {
+  ERROR=RunContainerError
+  status | rg ${ERROR} >> /dev/null
+  v="$?"
+  if [[ "${v}" == "1" ]]
+  then
+    ERROR=CrashLoopBackOff
+    status | rg ${ERROR} >> /dev/null
+
+    v="$?"
+    if [[ "${v}" == "1" ]]
+    then
+      echo "0"
+    else
+      echo "1"
+    fi
+  else
+    echo "1"
+  fi
+}
+
+# Wait while Node Explorer is being loaded into Kubernetes
+while [[ "`loaded`" -gt 0 ]]
+do
+  if [[ "${FIRST_LOAD}" == "0" ]]
+  then
+    FIRST_LOAD="1"
+    echo -n "waiting for ${NAME} to load..."
+  else
+    echo -n "."
+  fi
+  sleep ${SLEEP_MS}
+done
+
+# Only add a new line if loading was triggered
+if [[ "${FIRST_LOAD}" == "1" ]]
+then
+  echo ""
+fi
+
+
+echo ${NAME} is loaded into Kubernetes
+
+NEEDS_TO_BE_PATCED=`in_run_container_error`
+if [[ "${NEEDS_TO_BE_PATCED}" == "1" ]]
+then
+  echo ${NAME} needs to be patched
+  echo patching now...
+  patch
+else
+  echo ${NAME} is already patched
+fi
+
+
+
+

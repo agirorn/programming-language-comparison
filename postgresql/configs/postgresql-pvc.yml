@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: psql-db-pvc
+  labels:
+    app: postgres-sql
+spec:
+  selector:
+    matchLabels:
+      app: postgres-sql
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 1Gi
+  accessModes:
+    - ReadWriteOnce

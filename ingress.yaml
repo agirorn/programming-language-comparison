@@ -1,0 +1,98 @@
+# # To debug use
+# #
+# # kubectl describe ingress example-ingress-2
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: example-ingress-1
+#   # annotations:
+#   #   nginx.ingress.kubernetes.io/use-regex: "true"
+#   #   nginx.ingress.kubernetes.io/rewrite-target: /$2
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#     - http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: app-root-service
+#                 port:
+#                   number: 8080
+#           # - path: /app-js-express-js
+#           #   pathType: Prefix
+#           #   backend:
+#           #     service:
+#           #       name: app-js-express-js
+#           #       port:
+#           #         number: 8080
+#
+# ---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress-2
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /app/csharp_1(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: app-csharp-service
+                port:
+                  number: 8080
+
+          - path: /app/csharp_2(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: app-csharp-2-service
+                port:
+                  number: 8080
+
+          - path: /app/py_fastapi_uvicorn(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: app-py-fastapi-uvicorn-service
+                port:
+                  number: 8080
+
+          - path: /app/py_fastapi(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: app-py-fastapi-service
+                port:
+                  number: 8080
+
+          - path: /app/go_http_router(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: app-go-http-router-service
+                port:
+                  number: 8080
+
+          - path: /app/rust_axum(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: app-rust-axum-service
+                port:
+                  number: 8080
+
+          - path: /app/js_express_js(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: app-js-express-js-service
+                port:
+                  number: 8080

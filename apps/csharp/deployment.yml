@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-csharp
+  labels:
+    app: app-csharp
+spec:
+  containers:
+    - name: app-csharp-container
+      image: app-csharp
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 8080
+      env:
+        - name: DB_HOST
+          value: "postgres"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          value: "db_user"
+        - name: DB_PASS
+          value: "db_pass"
+        - name: DB_DATABASE
+          value: the_database
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-csharp-service
+spec:
+  selector:
+    app: app-csharp
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

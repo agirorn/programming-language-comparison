@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+TASK=$1
+for i in {1..10000}; do
+  make ${TASK}
+  MS=$((RANDOM % 1)).$((RANDOM));
+  echo sleeping for ${MS};
+  sleep ${MS};
+done

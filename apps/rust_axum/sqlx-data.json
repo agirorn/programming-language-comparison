@@ -1,0 +1,16 @@
+{
+  "db": "PostgreSQL",
+  "f0112be4c27b0cb6969ad0bc4fa20cead5de1b32fd38aeccb93ad77ae49e1b36": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Uuid",
+          "Json"
+        ]
+      }
+    },
+    "query": "\n        INSERT INTO rust_axum(id, data) VALUES ($1, $2);\n        "
+  }
+}

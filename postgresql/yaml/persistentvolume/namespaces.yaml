@@ -1,0 +1,14 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: postgres-no-pv
+  labels:
+    name: postgres-no-pv
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: postgres-with-pv
+  labels:
+    name: postgres-with-pv
+---

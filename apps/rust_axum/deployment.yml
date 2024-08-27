@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-rust-axum
+  labels:
+    app: app-rust-axum
+spec:
+  containers:
+    - name: app-rust-axum-container
+      image: app-rust-axum
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 8080
+      env:
+        - name: DB_HOST
+          value: "postgres"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          value: "db_user"
+        - name: DB_PASS
+          value: "db_pass"
+        - name: DB_DATABASE
+          value: the_database
+        - name: DATABASE_URL
+          value: postgres://db_user:db_pass@postgres:5432/the_database
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-rust-axum-service
+spec:
+  selector:
+    app: app-rust-axum
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
