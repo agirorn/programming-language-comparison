@@ -1,4 +1,14 @@
-# dual apps and NGINX Ingresss
+# Programming language comparison
+
+## links
+
+[Youtube: C# (.NET) vs. Go (Golang): Performance Benchmark in Kubernetes](https://www.youtube.com/watch?v=56TUfwejKfo)
+
+## Notes
+
+* Need to read the [ConfigureAwait FAQ](https://devblogs.microsoft.com/dotnet/configureawait-faq/)
+
+## dual apps and NGINX Ingresss
 
 This is an excample of using 2 application Kubernetes in 2 diffrent containers
 expose bia NGINX Ingress controller.

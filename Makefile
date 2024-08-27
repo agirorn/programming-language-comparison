@@ -6,6 +6,13 @@ setup-no-build:
 	make pg-start
 	make app-setup
 
+setup-nats:
+	kubectl apply -f https://github.com/nats-io/nack/releases/latest/download/crds.yml
+	helm repo add nats https://nats-io.github.io/k8s/helm/charts/
+	helm install nats nats/nats
+	# This probblay is not part of the setup
+	helm install nack-jsc nats/nack --set jetstream.nats.url=nats://nats:4222
+
 .PHONY: setup
 setup: setup-no-build
 	echo "Ready to rock"

@@ -56,20 +56,10 @@ async def get_count(request: Request):
 
 class Item(BaseModel):
     key: str
-    # description: str | None = None
-    # price: float
-    # tax: float | None = None
 
 @app.post("/insert")
 async def post_insert(request: Request, item: Item):
-    # print("insert")
-    # print(request)
-    # print(item)
-    # print(item.model_dump())
-    # print(type(item.model_dump_json()))
     id = uuid.uuid1()
-    # print(id)
-    # return "result"
     async with request.app.async_pool.connection() as conn:
         async with conn.cursor() as cur:
             await cur.execute(
@@ -82,7 +72,3 @@ async def post_insert(request: Request, item: Item):
             )
             results = await cur.fetchall()
             return results[0][0]
-
-# @app.api_route("/{path_name:path}", methods=["GET"])
-# async def catch_all(request: Request, path_name: str):
-#     return {"request_method": request.method, "path_name": path_name}

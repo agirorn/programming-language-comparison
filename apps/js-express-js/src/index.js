@@ -85,8 +85,8 @@ server.get('/select-count', wrap(async (req, res, next) => {
 }));
 
 server.post('/insert', wrap(async (req, res, next) => {
+  // The body has already been parsed as json
   const { body } = req;
-  const data = JSON.parse(body);
   const id = uuid.v4();
   const { rows } = await pool.query(`
     insert into js_express_js (id, data)
