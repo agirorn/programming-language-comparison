@@ -101,7 +101,7 @@ run-insert-app-%:
 	./bin/k6 run \
 		-e APP=$* \
 		--vus 20 \
-		--duration 60m \
+		--duration 2m \
 		--out "dashboard=export=reports/insert-app_$*.html" \
 		./scripts/insert-app.js > logs/insert-app_$*.log
 
