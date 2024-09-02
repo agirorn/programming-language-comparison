@@ -1,0 +1,40 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-csharp-3
+  labels:
+    app: app-csharp-3
+spec:
+  containers:
+    - name: app-csharp-3-container
+      image: app-csharp-3-api
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 8080
+      env:
+        - name: DATABASE_URL
+          value: "server=postgres;port=5432;database=the_database;user id=db_user;password=db_pass;include error detail=true;Maximum Pool Size=10;"
+        - name: DB_HOST
+          value: "postgres"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          value: "db_user"
+        - name: DB_PASS
+          value: "db_pass"
+        - name: DB_DATABASE
+          value: the_database
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-csharp-3-service
+spec:
+  selector:
+    app: app-csharp-3
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

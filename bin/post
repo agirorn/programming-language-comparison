@@ -20,7 +20,31 @@ curl \
 echo ""
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
 
-echo py_fastapi_uvicorn0
+echo go_http_only
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"key":"'`uuid`'"}' \
+  http://localhost/app/go_http_only/insert
+
+echo ""
+curl http://localhost/app/go_http_only/count
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo go_http_router
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"key":"'`uuid`'"}' \
+  http://localhost/app/go_http_router/insert
+
+echo ""
+curl http://localhost/app/go_http_router/count
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo py_fastapi_uvicorn
 curl \
   --request POST \
   --header "Content-Type: application/json" \
@@ -29,6 +53,18 @@ curl \
 
 echo ""
 curl http://localhost/app/py_fastapi_uvicorn/count
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo csharp_3
+curl \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --data '{"key":"'`uuid`'"}' \
+  http://localhost/app/csharp_3/insert
+
+echo ""
+curl http://localhost/app/csharp_3/count
 echo ""
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
 

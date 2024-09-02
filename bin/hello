@@ -13,7 +13,19 @@ curl http://localhost/app/rust_axum/hello
 echo ""
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
 
-echo py_fastapi_uvicorn0
+echo go_http_router
+curl http://localhost/app/go_http_router/hello
+
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo go_http_only
+curl http://localhost/app/go_http_only/hello
+
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo py_fastapi_uvicorn
 curl http://localhost/app/py_fastapi_uvicorn/hello
 
 echo ""
@@ -26,6 +38,15 @@ echo ""
 curl http://localhost/app/csharp_2/count
 echo ""
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+echo csharp_3
+curl http://localhost/app/csharp_3/hello
+
+echo ""
+curl http://localhost/app/csharp_3/count
+echo ""
+echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+
 
 echo rust_axum
 curl http://localhost/app/rust_axum/hello

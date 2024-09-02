@@ -17,16 +17,16 @@ run-script:
 .PHONY: run-hello
 run-hello:
 	./bin/k6 run \
-		--vus 200 \
-		--duration 10m \
+		--vus 20 \
+		--duration 2m \
 		--out "dashboard=export=reports/hello.html" \
 		./scripts/hello.js
 
 .PHONY: run-insert
 run-insert:
 	./bin/k6 run \
-		--vus 200 \
-		--duration 1m \
+		--vus 20 \
+		--duration 2m \
 		--out "dashboard=export=reports/insert.html" \
 		./scripts/insert.js
 
@@ -71,6 +71,10 @@ run-insert-rust_axum:
 run-insert-csharp_2:
 	make run-insert-app-csharp_2
 
+.PHONY: run-insert-csharp_3
+run-insert-csharp_3:
+	make run-insert-app-csharp_3
+
 .PHONY: run-insert-py_fastapi_uvicorn
 run-insert-py_fastapi_uvicorn:
 	make run-insert-app-py_fastapi_uvicorn
@@ -78,6 +82,10 @@ run-insert-py_fastapi_uvicorn:
 .PHONY: run-insert-go_http_router
 run-insert-go_http_router:
 	make run-insert-app-go_http_router
+
+.PHONY: run-insert-go_http_only
+run-insert-go_http_only:
+	make run-insert-app-go_http_only
 
 .PHONY: run-insert-js_express_js
 run-insert-js_express_js:
@@ -88,6 +96,8 @@ run-insert-all_in_a_row:
 	sleep 600
 	make run-insert-csharp_2
 	sleep 600
+	make run-insert-csharp_3
+	sleep 600
 	make run-insert-js_express_js
 	sleep 600
 	make run-insert-py_fastapi_uvicorn
@@ -95,6 +105,8 @@ run-insert-all_in_a_row:
 	make run-insert-rust_axum
 	sleep 600
 	make run-insert-go_http_router
+	sleep 600
+	make run-insert-go_http_only
 
 .PHONY: run-insert-app-%:
 run-insert-app-%:

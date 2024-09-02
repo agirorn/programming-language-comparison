@@ -57,6 +57,14 @@ spec:
                 port:
                   number: 8080
 
+          - path: /app/csharp_3(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: app-csharp-3-service
+                port:
+                  number: 8080
+
           - path: /app/py_fastapi_uvicorn(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
@@ -73,6 +81,14 @@ spec:
                 port:
                   number: 8080
 
+          - path: /app/go_http_only(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: app-go-http-only-service
+                port:
+                  number: 8080
+
           - path: /app/go_http_router(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
@@ -80,6 +96,7 @@ spec:
                 name: app-go-http-router-service
                 port:
                   number: 8080
+
 
           - path: /app/rust_axum(/|$)(.*)
             pathType: ImplementationSpecific

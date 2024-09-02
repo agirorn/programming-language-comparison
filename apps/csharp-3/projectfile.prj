@@ -1,0 +1,4 @@
+<PropertyGroup>
+  <PublishAot>true</PublishAot>
+  <RuntimeIdentifier>linux-x64</RuntimeIdentifier> <!-- Replace with your target runtime (e.g., linux-x64, osx-x64) -->
+</PropertyGroup>

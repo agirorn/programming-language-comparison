@@ -16,6 +16,35 @@ setup-nats:
 	# This probblay is not part of the setup
 	# helm install nack-jsc nats/nack --set jetstream.nats.url=nats://nats:4222
 
+.PHONY: nats-install
+nats-install:
+	helm install my-nats nats/nats
+
+.PHONY: nats-get-service
+nats-get-service:
+	kubectl get service | grep nats
+
+.PHONY: nats-port-forward
+nats-port-forward:
+	kubectl port-forward svc/ 9090:9090
+
+.PHONY: nats-k-pub
+nats-k-pub:
+	kubectl exec -it deployment/my-nats-box -- nats pub my-subject "Hello?"
+
+.PHONY: nats-pub
+nats-pub:
+	nats pub my-subject "Hello?"
+
+.PHONY: nats-k-sub
+nats-k-sub:
+	kubectl exec -it deployment/my-nats-box -- nats sub my-subject
+
+
+.PHONY: nats-sub
+nats-sub:
+	nats sub my-subject
+
 .PHONY: setup
 setup: setup-no-build
 	echo "Ready to rock"

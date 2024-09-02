@@ -16,6 +16,12 @@ CREATE TABLE csharp_2 (
   "offset" BIGSERIAL
 );
 
+CREATE TABLE csharp_3 (
+  "id" UUID,
+  "data" JSON,
+  "offset" BIGSERIAL
+);
+
 CREATE TABLE go_1 (
   "id" UUID,
   "data" JSON,
@@ -23,6 +29,12 @@ CREATE TABLE go_1 (
 );
 
 CREATE TABLE go_http_router (
+  "id" UUID,
+  "data" JSON,
+  "offset" BIGSERIAL
+);
+
+CREATE TABLE go_http_only (
   "id" UUID,
   "data" JSON,
   "offset" BIGSERIAL

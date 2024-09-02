@@ -11,8 +11,10 @@ export const options = {
 const js = new Trend('_js_express');
 const py = new Trend('_py_fastapi_uvicorn');
 const rust_axum = new Trend('_rust_axum');
-const csharp = new Trend('_csharp_2');
-const go = new Trend('_go_2_insert');
+const csharp_2 = new Trend('_csharp_2');
+const csharp_3 = new Trend('_csharp_3');
+const go_http_router = new Trend('_go_http_router');
+const go_http_only = new Trend('_go_http_only');
 
 export default function() {
   const data = {
@@ -45,7 +47,16 @@ export default function() {
       headers: { 'Content-Type': 'application/json' },
     }
   );
-  csharp.add(resp.timings.waiting);
+  csharp_2.add(resp.timings.waiting);
+
+  resp = http.post(
+    'http://localhost/app/csharp_3/insert',
+    JSON.stringify(data),
+    {
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
+  csharp_3.add(resp.timings.waiting);
 
   resp = http.post(
     'http://localhost/app/py_fastapi_uvicorn/insert',
@@ -63,6 +74,14 @@ export default function() {
       headers: { 'Content-Type': 'application/json' },
     }
   );
-  go.add(resp.timings.waiting);
+  go_http_router.add(resp.timings.waiting);
 
+  resp = http.post(
+    'http://localhost/app/go_http_only/insert',
+    JSON.stringify(data),
+    {
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
+  go_http_only.add(resp.timings.waiting);
 }
