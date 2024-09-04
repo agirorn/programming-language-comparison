@@ -90,10 +90,9 @@ server.post('/insert', wrap(async (req, res, next) => {
   const id = uuid.v4();
   const { rows } = await pool.query(`
     insert into js_express_js (id, data)
-    values ($1, $2)
-    returning id, "offset";
+    values ($1, $2);
   `, [id, JSON.stringify(body)])
-  res.json(rows);
+  res.json(body);
 }));
 
 server.all('/*', (req, res, next) => {

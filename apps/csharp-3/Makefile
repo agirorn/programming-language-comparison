@@ -4,7 +4,18 @@ setup:
 
 .PHONY: build
 build:
-	docker build . --tag app-csharp-3-api
+	dotnet publish ./api.csproj \
+		--output ./published-app \
+		--configuration Release \
+		 -r linux-x64 \
+		 --self-contained true
+
+
+
+.PHONY: build-local
+build-local:
+	make setup
+	dotnet build
 
 .PHONY: start
 start:

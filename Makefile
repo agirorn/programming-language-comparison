@@ -184,6 +184,10 @@ app-setup:
 build:
 	cd apps && make build
 
+.PHONY: build-local
+build-local:
+	cd apps && make build-local
+
 #
 # postgres
 #

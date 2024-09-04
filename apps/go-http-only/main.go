@@ -25,7 +25,7 @@ func hello_handler(w http.ResponseWriter, r *http.Request) {
 
 // Data structure to hold the incoming JSON data
 type MyData struct {
-	Key    string  `json:"key" binding:"required"`
+	Key string `json:"key" binding:"required"`
 }
 
 // Handler to save JSON data to the PostgreSQL database
