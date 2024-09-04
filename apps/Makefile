@@ -72,26 +72,26 @@ clean:
 
 .PHONY: build-local
 build-local:
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd flyway-migrations && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd go-http-router && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd go-http-only && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd py-fastapi && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd py-fastapi-uvicorn && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd app-root && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd js-express-js && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd csharp && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd csharp-2 && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd csharp-3 && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
 	cd rust_axum && pwd && /usr/bin/time -p make build-local
-	echo "--------------------------------------------"
+	@echo "--------------------------------------------"
