@@ -66,9 +66,8 @@ async def post_insert(request: Request, item: Item):
                 """
                 insert into py_fastapi_uvicorn(id, data)
                 values (%s, %s)
-                returning id, "offset";
                 """,
                 (id, item.model_dump_json())
             )
-            results = await cur.fetchall()
-            return results[0][0]
+
+        return item
