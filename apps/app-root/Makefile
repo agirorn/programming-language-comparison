@@ -2,6 +2,16 @@
 setup:
 	pnpm install
 
+.PHONY: build-local
+build-local: setup
+build-local:
+	echo "Build done"
+
+.PHONY: clean
+clean:
+	rm -rf node_modules
+	go clean -cache
+
 .PHONY: build
 build:
 	docker build . --tag `node -pe "require('./package.json').name"`

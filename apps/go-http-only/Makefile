@@ -2,6 +2,17 @@
 setup:
 	go mod download
 
+.PHONY: build-local
+build-local: setup
+build-local:
+	CGO_ENABLED=0 GOOS=linux go build main.go
+	echo "Build done"
+
+.PHONY: clean
+clean:
+	rm -f main
+	go clean -cache
+
 .PHONY: build
 build:
 	docker build . --tag app-go-http-only

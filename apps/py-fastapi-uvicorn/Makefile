@@ -4,6 +4,16 @@ setup:
 	echo "app-py-fastapi-uvicorn" > .python-version
 	pip install --upgrade -r requirements.txt
 
+
+.PHONY: build-local
+build-local: setup
+build-local:
+	echo "Build done"
+
+.PHONY: clean
+clean:
+	go clean -cache
+
 install-python:
 	pyenv install 3.10.14
 

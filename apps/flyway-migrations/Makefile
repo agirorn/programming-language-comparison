@@ -2,6 +2,15 @@
 setup:
 	echo "Nothing to setup"
 
+.PHONY: build-local
+build-local: setup
+build-local:
+	echo "Build done"
+
+.PHONY: clean
+clean:
+	echo "clean done"
+
 .PHONY: build
 build:
 	docker build . --tag flyway-migrations

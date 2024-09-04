@@ -2,6 +2,22 @@
 setup:
 	dotnet restore api.csproj
 
+.PHONY: build-local
+build-local: setup
+build-local:
+	dotnet publish ./api.csproj \
+		--output ./published-app \
+		--configuration Release \
+		 -r linux-x64 \
+		 --self-contained true
+	echo "Build done"
+
+.PHONY: clean
+clean:
+	dotnet clean
+	dotnet clean --configuration Release
+	rm -rf obj bin published-app
+
 .PHONY: build
 build:
 	docker build . --tag app-csharp-3-api

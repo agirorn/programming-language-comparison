@@ -53,3 +53,45 @@ stop:
 	cd csharp-2 && make stop
 	cd csharp-3 && make stop
 	cd rust_axum && make stop
+
+
+.PHONY: clean
+clean:
+	cd flyway-migrations && pwd && make clean
+	cd go-http-router && pwd && make clean
+	cd go-http-only && pwd && make clean
+	cd py-fastapi && pwd && make clean
+	cd py-fastapi-uvicorn && pwd && make clean
+	cd app-root && pwd && make clean
+	cd js-express-js && pwd && make clean
+	cd csharp && pwd && make clean
+	cd csharp-2 && pwd && make clean
+	cd csharp-3 && pwd && make clean
+	cd rust_axum && pwd && make clean
+
+
+.PHONY: build-local
+build-local:
+	echo "--------------------------------------------"
+	cd flyway-migrations && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd go-http-router && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd go-http-only && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd py-fastapi && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd py-fastapi-uvicorn && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd app-root && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd js-express-js && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd csharp && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd csharp-2 && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd csharp-3 && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"
+	cd rust_axum && pwd && /usr/bin/time -p make build-local
+	echo "--------------------------------------------"

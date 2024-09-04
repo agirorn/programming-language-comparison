@@ -2,6 +2,16 @@
 setup:
 	echo "No op"
 
+.PHONY: build-local
+build-local: setup
+build-local:
+	SQLX_OFFLINE=true cargo build --release
+	echo "Build done"
+
+.PHONY: clean
+clean:
+	cargo clean
+
 .PHONY: prep
 prep:
 	cargo sqlx prepare

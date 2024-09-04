@@ -3,6 +3,16 @@ setup:
 	pyenv virtualenv 3.10.14 app-py-fastapi || echo "OK"
 	echo "app-py-fastapi" > .python-version
 
+
+.PHONY: build-local
+build-local: setup
+build-local:
+	echo "Build done"
+
+.PHONY: clean
+clean:
+	go clean -cache
+
 install-python:
 	pyenv install 3.10.14
 
