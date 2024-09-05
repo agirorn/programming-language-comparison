@@ -1,0 +1,36 @@
+
+          /\      |‾‾| /‾‾/   /‾‾/
+     /\  /  \     |  |/  /   /  /
+    /  \/    \    |     (   /   ‾‾\ 
+   /          \   |  |\  \ |  (‾)  |
+  / __________ \  |__| \__\ \_____/ .io
+
+     execution: local
+        script: ./scripts/insert-app.js
+        output: dashboard http://127.0.0.1:5665
+
+     scenarios: (100.00%) 1 scenario, 50 max VUs, 2m30s max duration (incl. graceful stop):
+              * default: 50 looping VUs for 2m0s (gracefulStop: 30s)
+
+
+     _csharp_2......................: avg=12.115571 min=2.563  med=10.924  max=165.945  p(90)=17.364  p(95)=20.444
+     data_received..................: 103 MB 856 kB/s
+     data_sent......................: 94 MB  779 kB/s
+     http_req_blocked...............: avg=3.17µs    min=1µs    med=2µs     max=10.01ms  p(90)=3µs     p(95)=4µs
+     http_req_connecting............: avg=402ns     min=0s     med=0s      max=3.01ms   p(90)=0s      p(95)=0s
+     http_req_duration..............: avg=12.2ms    min=2.63ms med=11ms    max=166ms    p(90)=17.46ms p(95)=20.54ms
+       { expected_response:true }...: avg=12.2ms    min=2.63ms med=11ms    max=166ms    p(90)=17.46ms p(95)=20.54ms
+     http_req_failed................: 0.00%  ✓ 0           ✗ 484337
+     http_req_receiving.............: avg=70.67µs   min=12µs   med=33µs    max=108.7ms  p(90)=66µs    p(95)=191µs
+     http_req_sending...............: avg=15.87µs   min=5µs    med=13µs    max=9.68ms   p(90)=21µs    p(95)=25µs
+     http_req_tls_handshaking.......: avg=0s        min=0s     med=0s      max=0s       p(90)=0s      p(95)=0s
+     http_req_waiting...............: avg=12.11ms   min=2.56ms med=10.92ms max=165.94ms p(90)=17.36ms p(95)=20.44ms
+     http_reqs......................: 484337 4035.766912/s
+     iteration_duration.............: avg=12.37ms   min=2.78ms med=11.18ms max=166.16ms p(90)=17.64ms p(95)=20.73ms
+     iterations.....................: 484337 4035.766912/s
+     vus............................: 50     min=50        max=50
+     vus_max........................: 50     min=50        max=50
+
+
+running (2m00.0s), 00/50 VUs, 484337 complete and 0 interrupted iterations
+default ✓ [ 100% ] 50 VUs  2m0s

@@ -80,17 +80,17 @@ curl http://localhost/app/csharp_2/count
 echo ""
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
 
-echo rust_axum
-curl \
-  --request POST \
-  --header "Content-Type: application/json" \
-  --data '{"key":"'`uuid`'"}' \
-  http://localhost/app/rust_axum/insert
-
-echo ""
-curl http://localhost/app/rust_axum/count
-echo ""
-echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
+# echo rust_axum
+# curl \
+#   --request POST \
+#   --header "Content-Type: application/json" \
+#   --data '{"key":"'`uuid`'"}' \
+#   http://localhost/app/rust_axum/insert
+#
+# echo ""
+# curl http://localhost/app/rust_axum/count
+# echo ""
+# echo "- - - - - - - - - - - - - - - - - - - - - - - - - -"
 
 
 

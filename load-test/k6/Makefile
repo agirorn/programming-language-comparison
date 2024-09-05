@@ -67,55 +67,176 @@ run-insert-low-load:
 run-insert-rust_axum:
 	make run-insert-app-rust_axum
 
-.PHONY: run-insert-csharp_2
-run-insert-csharp_2:
-	make run-insert-app-csharp_2
+######
 
-.PHONY: run-insert-csharp_3
-run-insert-csharp_3:
-	make run-insert-app-csharp_3
+.PHONY: run-insert-20-users-2-minuts-csharp_2
+run-insert-20-users-2-minuts-csharp_2:
+	make run-insert-app-20-users-2-minuts-csharp_2
 
-.PHONY: run-insert-py_fastapi_uvicorn
-run-insert-py_fastapi_uvicorn:
-	make run-insert-app-py_fastapi_uvicorn
+.PHONY: run-insert-20-users-2-minuts-csharp_3
+run-insert-20-users-2-minuts-csharp_3:
+	make run-insert-app-20-users-2-minuts-csharp_3
 
-.PHONY: run-insert-go_http_router
-run-insert-go_http_router:
-	make run-insert-app-go_http_router
+.PHONY: run-insert-20-users-2-minuts-py_fastapi_uvicorn
+run-insert-20-users-2-minuts-py_fastapi_uvicorn:
+	make run-insert-app-20-users-2-minuts-py_fastapi_uvicorn
 
-.PHONY: run-insert-go_http_only
-run-insert-go_http_only:
-	make run-insert-app-go_http_only
+.PHONY: run-insert-20-users-2-minuts-go_http_router
+run-insert-20-users-2-minuts-go_http_router:
+	make run-insert-app-20-users-2-minuts-go_http_router
 
-.PHONY: run-insert-js_express_js
-run-insert-js_express_js:
-	make run-insert-app-js_express_js
+.PHONY: run-insert-20-users-2-minuts-go_http_only
+run-insert-20-users-2-minuts-go_http_only:
+	make run-insert-app-20-users-2-minuts-go_http_only
 
-.PHONY: run-insert-all_in_a_row
-run-insert-all_in_a_row:
-	sleep 600
-	make run-insert-csharp_2
-	sleep 600
-	make run-insert-csharp_3
-	sleep 600
-	make run-insert-js_express_js
-	sleep 600
-	make run-insert-py_fastapi_uvicorn
-	sleep 600
-	make run-insert-rust_axum
-	sleep 600
-	make run-insert-go_http_router
-	sleep 600
-	make run-insert-go_http_only
+.PHONY: run-insert-20-users-2-minuts-js_express_js
+run-insert-20-users-2-minuts-js_express_js:
+	make run-insert-app-20-users-2-minuts-js_express_js
 
-.PHONY: run-insert-app-%:
-run-insert-app-%:
+.PHONY: run-insert-20-users-2-minuts-rust_axum
+run-insert-20-users-2-minuts-rust_axum:
+	make run-insert-app-20-users-2-minuts-rust_axum
+
+.PHONY: run-insert-all-20-users-2-minuts
+run-insert-all-20-users-2-minuts:
+	sleep 120
+	make run-insert-20-users-2-minuts-csharp_2
+	sleep 120
+	make run-insert-20-users-2-minuts-csharp_3
+	sleep 120
+	make run-insert-20-users-2-minuts-js_express_js
+	sleep 120
+	make run-insert-20-users-2-minuts-py_fastapi_uvicorn
+	sleep 120
+	make run-insert-20-users-2-minuts-rust_axum
+	sleep 120
+	make run-insert-20-users-2-minuts-go_http_router
+	sleep 120
+	make run-insert-20-users-2-minuts-go_http_only
+
+.PHONY: run-insert-app-20-users-2-minuts-%
+run-insert-app-20-users-2-minuts-%:
 	./bin/k6 run \
 		-e APP=$* \
 		--vus 20 \
 		--duration 2m \
 		--out "dashboard=export=reports/insert-app_$*.html" \
 		./scripts/insert-app.js > logs/insert-app_$*.log
+
+#####
+
+.PHONY: run-insert-50-users-2-minuts-csharp_2
+run-insert-50-users-2-minuts-csharp_2:
+	make run-insert-app-50-users-2-minuts-csharp_2
+
+.PHONY: run-insert-50-users-2-minuts-csharp_3
+run-insert-50-users-2-minuts-csharp_3:
+	make run-insert-app-50-users-2-minuts-csharp_3
+
+.PHONY: run-insert-50-users-2-minuts-py_fastapi_uvicorn
+run-insert-50-users-2-minuts-py_fastapi_uvicorn:
+	make run-insert-app-50-users-2-minuts-py_fastapi_uvicorn
+
+.PHONY: run-insert-50-users-2-minuts-go_http_router
+run-insert-50-users-2-minuts-go_http_router:
+	make run-insert-app-50-users-2-minuts-go_http_router
+
+.PHONY: run-insert-50-users-2-minuts-go_http_only
+run-insert-50-users-2-minuts-go_http_only:
+	make run-insert-app-50-users-2-minuts-go_http_only
+
+.PHONY: run-insert-50-users-2-minuts-js_express_js
+run-insert-50-users-2-minuts-js_express_js:
+	make run-insert-app-50-users-2-minuts-js_express_js
+
+.PHONY: run-insert-50-users-2-minuts-rust_axum
+run-insert-50-users-2-minuts-rust_axum:
+	make run-insert-app-50-users-2-minuts-rust_axum
+
+.PHONY: run-insert-all-50-users-2-minuts
+run-insert-all-50-users-2-minuts:
+	# sleep 120
+	make run-insert-50-users-2-minuts-csharp_2
+	sleep 120
+	make run-insert-50-users-2-minuts-csharp_3
+	sleep 120
+	make run-insert-50-users-2-minuts-js_express_js
+	sleep 120
+	make run-insert-50-users-2-minuts-py_fastapi_uvicorn
+	sleep 120
+	make run-insert-50-users-2-minuts-rust_axum
+	sleep 120
+	make run-insert-50-users-2-minuts-go_http_router
+	sleep 120
+	make run-insert-50-users-2-minuts-go_http_only
+
+.PHONY: run-insert-app-50-users-2-minuts-%
+run-insert-app-50-users-2-minuts-%:
+	./bin/k6 run \
+		-e APP=$* \
+		--vus 50 \
+		--duration 2m \
+		--out "dashboard=export=reports/insert-app_$*.html" \
+		./scripts/insert-app.js > logs/insert-app_$*.log
+
+####
+
+.PHONY: run-insert-50-users-30-minuts-csharp_2
+run-insert-50-users-30-minuts-csharp_2:
+	make run-insert-app-50-users-30-minuts-csharp_2
+
+.PHONY: run-insert-50-users-30-minuts-csharp_3
+run-insert-50-users-30-minuts-csharp_3:
+	make run-insert-app-50-users-30-minuts-csharp_3
+
+.PHONY: run-insert-50-users-30-minuts-py_fastapi_uvicorn
+run-insert-50-users-30-minuts-py_fastapi_uvicorn:
+	make run-insert-app-50-users-30-minuts-py_fastapi_uvicorn
+
+.PHONY: run-insert-50-users-30-minuts-go_http_router
+run-insert-50-users-30-minuts-go_http_router:
+	make run-insert-app-50-users-30-minuts-go_http_router
+
+.PHONY: run-insert-50-users-30-minuts-go_http_only
+run-insert-50-users-30-minuts-go_http_only:
+	make run-insert-app-50-users-30-minuts-go_http_only
+
+.PHONY: run-insert-50-users-30-minuts-js_express_js
+run-insert-50-users-30-minuts-js_express_js:
+	make run-insert-app-50-users-30-minuts-js_express_js
+
+.PHONY: run-insert-50-users-30-minuts-rust_axum
+run-insert-50-users-30-minuts-rust_axum:
+	make run-insert-app-50-users-30-minuts-rust_axum
+
+.PHONY: run-insert-all-50-users-30-minuts
+run-insert-all-50-users-30-minuts:
+	# sleep 600
+	# make run-insert-50-users-30-minuts-csharp_2
+	# sleep 600
+	make run-insert-50-users-30-minuts-csharp_3
+	sleep 600
+	make run-insert-50-users-30-minuts-js_express_js
+	sleep 600
+	make run-insert-50-users-30-minuts-py_fastapi_uvicorn
+	sleep 600
+	make run-insert-50-users-30-minuts-rust_axum
+	# sleep 600
+	# make run-insert-50-users-30-minuts-go_http_router
+	sleep 600
+	make run-insert-50-users-30-minuts-go_http_only
+
+.PHONY: run-insert-app-50-users-30-minuts-%
+run-insert-app-50-users-30-minuts-%:
+	./bin/k6 run \
+		-e APP=$* \
+		--vus 50 \
+		--duration 30m \
+		--out "dashboard=export=reports/insert-app_$*.html" \
+		./scripts/insert-app.js > logs/insert-app_$*.log
+
+####
+
 
 .PHONY: run-insert-rust
 run-insert-rust:
